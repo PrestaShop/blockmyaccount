@@ -41,14 +41,14 @@ class BlockMyAccount extends Module
 
 		$this->displayName = $this->l('My Account block');
 		$this->description = $this->l('Displays a block with links relative to a user\'s account.');
-		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
+		$this->ps_versions_compliancy = array('min' => '1.6', 'max' => '1.6.99.99');
 	}
 
 	public function install()
 	{
-		if (!$this->addMyAccountBlockHook() 
-			|| !parent::install() 
-			|| !$this->registerHook('displayLeftColumn') 
+		if (!$this->addMyAccountBlockHook()
+			|| !parent::install()
+			|| !$this->registerHook('displayLeftColumn')
 			|| !$this->registerHook('displayHeader')
 			|| !$this->registerHook('actionModuleRegisterHookAfter')
 			|| !$this->registerHook('actionModuleUnRegisterHookAfter'))
@@ -89,7 +89,7 @@ class BlockMyAccount extends Module
 	{
 		return $this->hookDisplayLeftColumn($params);
 	}
-	
+
 	public function hookDisplayFooter($params)
 	{
 		return $this->hookDisplayLeftColumn($params);
@@ -110,5 +110,3 @@ class BlockMyAccount extends Module
 		$this->context->controller->addCSS(($this->_path).'blockmyaccount.css', 'all');
 	}
 }
-
-
